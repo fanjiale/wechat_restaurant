@@ -6,9 +6,10 @@ import com.skytech.ark.jdbc.IGenericDAO;
 import java.util.List;
 
 /**
- * Created by fanjl on 2016/9/30.
+ * Created by Andy on 2016/11/4.
+ * 用户登录日志
  */
-public interface UserDao extends IGenericDAO<JSONObject> {
+public interface S_loginLogDao extends IGenericDAO<JSONObject> {
 
     List<JSONObject> listUserByUserName(String username);
 }

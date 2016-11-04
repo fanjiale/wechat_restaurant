@@ -1,7 +1,7 @@
 package com.andy.restaurant.dao.impl;
 
 import com.alibaba.fastjson.JSONObject;
-import com.andy.restaurant.dao.UserDao;
+import com.andy.restaurant.dao.S_userDao;
 import com.skytech.ark.jdbc.GenericCRUD;
 import org.springframework.stereotype.Repository;
 
@@ -11,7 +11,7 @@ import java.util.List;
  * Created by fanjl on 2016/9/30.
  */
 @Repository
-public class UserDaoImpl extends GenericCRUD<JSONObject> implements UserDao {
+public class S_userDaoImpl extends GenericCRUD<JSONObject> implements S_userDao {
 
     @Override
     protected String getTableName() {

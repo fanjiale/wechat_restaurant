@@ -1,9 +1,9 @@
 package com.andy.restaurant.service.impl;
 
 import com.alibaba.fastjson.JSONObject;
-import com.andy.restaurant.dao.UserDao;
+import com.andy.restaurant.dao.S_userDao;
 import com.andy.restaurant.pojo.User;
-import com.andy.restaurant.service.UserService;
+import com.andy.restaurant.service.S_userService;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,10 +14,10 @@ import java.util.List;
  * Created by fanjl on 2016/9/30.
  */
 @Service
-public class UserServiceImpl implements UserService {
+public class S_serServiceImpl implements S_userService {
 
     @Autowired
-    private UserDao userDao;
+    private S_userDao userDao;
 
     @Override
     public boolean validateUserInfo(String username, String password) {
@@ -40,7 +40,7 @@ public class UserServiceImpl implements UserService {
         User user = new User();
         List<JSONObject> users = userDao.listUserByUserName(username);
 
-        if(!users.isEmpty()){
+        if (!users.isEmpty()) {
             JSONObject item = users.get(0);
 
             user.setUsername(username);
@@ -49,5 +49,12 @@ public class UserServiceImpl implements UserService {
         return user;
     }
 
+    @Override
+    public String createUser(String user_name, String password) {
+        JSONObject condition = new JSONObject();
+        condition.put("user_name", user_name);
+        condition.put("password", DigestUtils.md5Hex(password));
 
+        return userDao.save(condition);
+    }
 }

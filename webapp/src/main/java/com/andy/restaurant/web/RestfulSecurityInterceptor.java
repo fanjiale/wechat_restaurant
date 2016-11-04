@@ -14,6 +14,9 @@ import javax.servlet.http.HttpServletResponse;
 public class RestfulSecurityInterceptor implements HandlerInterceptor {
 
     private String[] whiteList;
+    private String login_url;
+    private String logout_url;
+
     private static final String BEST_MATCH_PATTERN = "org.springframework.web.servlet.HandlerMapping.bestMatchingPattern";
     private static final String LOGIN_ACCOUNT_SESSIONKEY = "AuthenticatedAccount";
 
@@ -34,14 +37,12 @@ public class RestfulSecurityInterceptor implements HandlerInterceptor {
                 return true;
             }
         }
-        /**
-         * @todo 这个pattern的获得属于spring mvc的实现
-         */
-        String bestMatchPattern = httpServletRequest.getAttribute(BEST_MATCH_PATTERN).toString();
+
+        /*String bestMatchPattern = httpServletRequest.getAttribute(BEST_MATCH_PATTERN).toString();
         logger.debug("[BEST MATCH] " + bestMatchPattern);
 
-      /*  //set current logined user account to thread
-        DoraemonAccount account = (DoraemonAccount) httpServletRequest.getSession(true).getAttribute(LOGIN_ACCOUNT_SESSIONKEY);
+        //set current logined user account to thread
+        Account account = (Account) httpServletRequest.getSession(true).getAttribute(LOGIN_ACCOUNT_SESSIONKEY);
         if (account != null) {
             accountHelper.setCurrent(account);
         }else{
@@ -49,8 +50,8 @@ public class RestfulSecurityInterceptor implements HandlerInterceptor {
             httpServletResponse.sendRedirect(httpServletRequest.getContextPath() + "/login");
             return false;
         }
-*/
-       /* int result = urlSecurity.canAccess(httpServletRequest.getRequestURI(), httpServletRequest.getMethod().toUpperCase(), bestMatchPattern);
+
+        int result = urlSecurity.canAccess(httpServletRequest.getRequestURI(), httpServletRequest.getMethod().toUpperCase(), bestMatchPattern);
         if (result == UrlSecurity.PASSED) {
             return true;
         } else {
@@ -62,7 +63,19 @@ public class RestfulSecurityInterceptor implements HandlerInterceptor {
 
     @Override
     public void postHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o, ModelAndView modelAndView) throws Exception {
-        //To change body of implemented methods use File | Settings | File Templates.
+        String servletPath = httpServletRequest.getServletPath().replaceFirst("/","");
+
+        if(this.login_url.endsWith(servletPath)){
+
+            String username = (String) httpServletRequest.getAttribute("username");
+
+
+
+        }
+        if(this.logout_url.endsWith(servletPath)){
+            httpServletRequest.getSession().removeAttribute("username");
+        }
+
     }
 
     @Override
@@ -72,5 +85,13 @@ public class RestfulSecurityInterceptor implements HandlerInterceptor {
 
     public void setWhiteList(String[] whiteList) {
         this.whiteList = whiteList;
+    }
+
+    public void setLogin_url(String login_url) {
+        this.login_url = login_url;
+    }
+
+    public void setLogout_url(String logout_url) {
+        this.logout_url = logout_url;
     }
 }

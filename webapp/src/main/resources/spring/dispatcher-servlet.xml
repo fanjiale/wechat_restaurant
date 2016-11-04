@@ -74,10 +74,11 @@
                 <property name="whiteList">
                     <array>
                         <value>login</value>
-                        <value>userLogin</value>
                         <value>logout</value>
                     </array>
                 </property>
+                <property name="login_url" value="userlogin" />
+                <property name="logout_url" value="logout" />
             </bean>
         </mvc:interceptor>
     </mvc:interceptors>

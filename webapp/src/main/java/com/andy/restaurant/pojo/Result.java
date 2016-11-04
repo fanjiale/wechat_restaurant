@@ -12,7 +12,9 @@ public class Result extends JSONObject {
 
     private String errormsg;
 
-    public void returnErrorMsg(String errormsg){
+    private JSONObject data;
+
+    public void setErrorMsg(String errormsg){
         this.success = false;
         this.errormsg = errormsg;
     }
@@ -31,5 +33,13 @@ public class Result extends JSONObject {
 
     public void setErrormsg(String errormsg) {
         this.errormsg = errormsg;
+    }
+
+    public JSONObject getData() {
+        return data;
+    }
+
+    public void setData(JSONObject data) {
+        this.data = data;
     }
 }
