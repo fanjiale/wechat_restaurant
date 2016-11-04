@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en" ng-app>
+<head>
+    <meta charset="utf-8"/>
+    <title>登陆test</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+    <link rel="stylesheet" href="lib/bootstrap/css/bootstrap.css">
+    <style type="text/css">
+        .form-signin {
+            max-width: 330px;
+            padding: 15px;
+            margin: 0 auto;
+        }
+        .form-signin .form-signin-heading,
+        .form-signin .checkbox {
+            margin-bottom: 10px;
+        }
+        .form-signin .checkbox {
+            font-weight: normal;
+        }
+        .form-signin .form-control {
+            position: relative;
+            height: auto;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+            padding: 10px;
+            font-size: 16px;
+        }
+        .form-signin .form-control:focus {
+            z-index: 2;
+        }
+        .form-signin input[type="email"] {
+            margin-bottom: -1px;
+            border-bottom-right-radius: 0;
+            border-bottom-left-radius: 0;
+        }
+        .form-signin input[type="password"] {
+            margin-bottom: 10px;
+            border-top-left-radius: 0;
+            border-top-right-radius: 0;
+        }
+
+    </style>
+</head>
+<body>
+<nav class="nav navbar-default navbar-fixed-top" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="#" class="navbar-brand">
+                <img src="resources/image/nav.png" style="height: 50px;margin-top: -15px;">
+            </a>
+        </div>
+        <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#">首页</a></li>
+                <li><a href="#">囧文</a></li>
+                <li><a href="#">文章</a></li>
+            </ul>
+            <div class="navbar-form navbar-right">
+                <a href="#" class="navbar-link">登录</a>
+                <a href="#" class="navbar-link">注册</a>
+                <input class="form-control" type="text" placeholder="请输入关键字">
+                <button class="btn btn-primary">搜   索</button>
+            </div>
+        </div>
+    </div>
+</nav>
+<div style="height: 50px;"></div>
+<div class="container">
+
+    <form class="form-signin" role="form">
+        <h2 class="form-signin-heading"><span class="glyphicon glyphicon-user"></span>  用户登录</h2>
+        <input type="text" class="form-control" placeholder="账号" required="" autofocus="">
+        <input type="password" class="form-control" placeholder="密码" required="">
+        <!--<div class="checkbox">
+            <label>
+                <input type="checkbox" value="remember-me"> Remember me
+            </label>
+        </div>-->
+        <button class="btn btn-lg btn-primary btn-block" type="submit">登录</button>
+    </form>
+
+</div>
+
+<script src="lib/jquery/jquery.min.js"></script>
+<script src="lib/bootstrap/js/bootstrap.min.js"></script>
+<script src="lib/angular/angular.js"></script>
+<script type="text/javascript">
+    function loginController($scope, $http, $log) {
+        $scope.errorMsg = '';
+
+        $scope.login = function () {
+            $scope.errorMsg = '';
+            if(!$scope.username || !$scope.password){
+                $scope.errorMsg = '用户名或密码不能为空';
+                return;
+            }
+
+            $http.post("login", {
+                loginName: $scope.username,
+                password: $scope.password
+            }).success(function (response) {
+                if (response.success) {
+                    window.location.href='./';
+                } else {
+                    $scope.errorMsg = response.msg;
+                }
+            });
+        };
+
+        $scope.enterLogin = function (event) {
+            if (event.keyCode == 13) {
+                event.returnValue=false;
+                event.cancel = true;
+                $scope.login();
+            }
+        };
+    }
+</script>
+</body>
+</html>

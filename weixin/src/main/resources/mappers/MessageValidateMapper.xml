@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.weixin.common.mapper.MessageValidateMapper" >
+
+  	<insert id="insertValidateMessage" parameterType="com.weixin.common.model.validate.ValidateMessage">
+  	<selectKey resultType="java.lang.Long" keyProperty="msgId" order="BEFORE">
+	  	 Select Seq_Validate_Message.Nextval From Dual
+	  </selectKey>
+		Insert Into Validate_Message
+   			(Msg_Id, Open_Id, Acc_Nbr, validate_code,create_date,exp_date)
+		Values
+	 		(#{msgId},#{openId,jdbcType=VARCHAR},#{accNbr,jdbcType=VARCHAR},#{vCode,jdbcType=VARCHAR},sysdate,sysdate+#{expTime}/1440)
+  	</insert>
+  	
+  	<select id="countOpenIdValidateTimes" resultType="java.lang.Long">
+  		select count(1) from Validate_Message where open_id = #{openId,jdbcType=VARCHAR}
+  		and create_date > sysdate - #{limitTime}
+  	</select>
+  	
+  	<select id="queryValidateMessage" resultType="com.weixin.common.model.validate.ValidateMessage" parameterType="com.weixin.common.model.validate.ValidateMessage">
+  	 select 	
+		msg_id as "msgId",
+		open_id  as "openId",
+		acc_nbr as "accNbr",
+		validate_code as "vCode",
+		create_date as "createDate"
+		from validate_message t where t.msg_id = #{msgId} and t.open_id = #{openId}
+		and t.acc_nbr = #{accNbr} and t.validate_code = #{vCode}
+		and sysdate between create_date and exp_date
+  	</select>
+  	
+  	<select id="getUamTransactionSeq"  resultType="java.lang.String">
+		<![CDATA[
+		select To_Char(Sysdate, 'yyyymmdd')||Lpad(SEQ_UAM_TRANSACTION_NBR.Nextval, 10, 0) from dual
+		]]>
+	</select>
+</mapper>

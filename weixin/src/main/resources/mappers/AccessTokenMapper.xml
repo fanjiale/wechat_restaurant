@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.weixin.common.mapper.AccessTokenMapper" >
+	
+	<!-- 名字与UsersMapper.java中方法名对应 -->
+	<select id="getAccessTokenConfig" resultType="java.util.HashMap" >
+		select server_ip,server_port,access_token,last_date period from sys_access_token
+		where token_type = #{type}
+	</select>
+	
+	<update id="updateAccessToken" parameterType="java.util.Map">
+	    update sys_access_token set access_token = #{accessToken} ,last_date = now() where token_type = #{type}
+	</update>
+</mapper>
