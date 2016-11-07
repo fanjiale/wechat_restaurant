@@ -72,7 +72,7 @@
                 return;
             }
 
-            $http.post("login", {
+            $http.post("userlogin", {
                 username: $scope.username,
                 password: $scope.password
             }).success(function (response) {
@@ -82,14 +82,6 @@
                     $scope.errorMsg = response.msg;
                 }
             });
-        };
-
-        $scope.enterLogin = function (event) {
-            if (event.keyCode == 13) {
-                event.returnValue=false;
-                event.cancel = true;
-                $scope.login();
-            }
         };
     });
 
