@@ -2,7 +2,6 @@ package com.andy.restaurant.web;
 
 import com.alibaba.fastjson.JSONObject;
 import com.andy.restaurant.pojo.Result;
-import com.andy.restaurant.pojo.User;
 import com.andy.restaurant.service.S_loginLogService;
 import com.andy.restaurant.service.S_userService;
 import org.slf4j.Logger;
@@ -33,7 +32,7 @@ public class LoginController {
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String index() {
-        return "login";
+        return "index";
     }
 
     @RequestMapping(value = "userlogin", method = RequestMethod.POST)
@@ -51,15 +50,27 @@ public class LoginController {
         if (userService.validateUserInfo(username, password)) {
             loginLogService.recordUserLoginLog(username, request);
 
-            JSONObject param = new JSONObject();
-            param.put("username", username);
-            result.setData(param);
+            session.setAttribute("AuthenticatedAccount", username);
+
+            result.put("username", username);
         } else {
             result.setErrorMsg("用户名或密码错误！");
         }
 
         return result;
 
+    }
+
+    @RequestMapping(value = "/logout", method = RequestMethod.GET)
+    @ResponseBody
+    public JSONObject logout(HttpSession session) {
+        session.removeAttribute("username");
+        return new JSONObject();
+    }
+
+    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    public String login() {
+        return "login";
     }
 
 }

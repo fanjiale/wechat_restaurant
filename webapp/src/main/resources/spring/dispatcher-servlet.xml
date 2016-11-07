@@ -74,6 +74,7 @@
                 <property name="whiteList">
                     <array>
                         <value>login</value>
+                        <value>userlogin</value>
                         <value>logout</value>
                     </array>
                 </property>

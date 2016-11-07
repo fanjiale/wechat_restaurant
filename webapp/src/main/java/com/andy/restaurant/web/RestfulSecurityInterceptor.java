@@ -38,43 +38,32 @@ public class RestfulSecurityInterceptor implements HandlerInterceptor {
             }
         }
 
-        /*String bestMatchPattern = httpServletRequest.getAttribute(BEST_MATCH_PATTERN).toString();
+        String bestMatchPattern = httpServletRequest.getAttribute(BEST_MATCH_PATTERN).toString();
         logger.debug("[BEST MATCH] " + bestMatchPattern);
 
         //set current logined user account to thread
-        Account account = (Account) httpServletRequest.getSession(true).getAttribute(LOGIN_ACCOUNT_SESSIONKEY);
-        if (account != null) {
-            accountHelper.setCurrent(account);
-        }else{
+        String account = (String) httpServletRequest.getSession(true).getAttribute(LOGIN_ACCOUNT_SESSIONKEY);
+        if (account == null) {
             //验证用户登录
             httpServletResponse.sendRedirect(httpServletRequest.getContextPath() + "/login");
             return false;
         }
 
-        int result = urlSecurity.canAccess(httpServletRequest.getRequestURI(), httpServletRequest.getMethod().toUpperCase(), bestMatchPattern);
-        if (result == UrlSecurity.PASSED) {
-            return true;
-        } else {
-            httpServletResponse.sendRedirect(httpServletRequest.getContextPath() + "/noPower.html");
-            return false;
-        }*/
         return true;
     }
 
     @Override
     public void postHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o, ModelAndView modelAndView) throws Exception {
-        String servletPath = httpServletRequest.getServletPath().replaceFirst("/","");
+        /*String servletPath = httpServletRequest.getServletPath().replaceFirst("/","");
 
-        if(this.login_url.endsWith(servletPath)){
+        if(this.login_url.equals(servletPath)){
 
             String username = (String) httpServletRequest.getAttribute("username");
 
-
-
         }
-        if(this.logout_url.endsWith(servletPath)){
+        if(this.logout_url.equals(servletPath)){
             httpServletRequest.getSession().removeAttribute("username");
-        }
+        }*/
 
     }
 
