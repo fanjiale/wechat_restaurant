@@ -4,7 +4,9 @@ diamond.run(
             $rootScope.$state = $state;
             $rootScope.$stateParams = $stateParams;
 
-
+            $rootScope.$on('$stateChangeSuccess', function (event, toState, toParams, fromState, fromParams) {
+                $rootScope.$broadcast('refreshLocations', {});
+            });
 
         }
     ]

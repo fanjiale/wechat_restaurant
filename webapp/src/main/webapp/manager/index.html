@@ -20,19 +20,19 @@
     </div>
     <ul class="nav">
         <li>
-            <a href="" target="rightFrame">
+            <a href="" ui-sref="home.dashboard" ui-sref-active="selected">
                 <img src="resources/images/icon02.png" title="首页"/>
-            <h2>首页</h2>
+                <h2>首页</h2>
             </a>
         </li>
         <li>
-            <a href="" class="selected">
+            <a href="">
                 <img src="resources/images/icon01.png" title="工作台"/>
                 <h2>工作台</h2>
             </a>
         </li>
         <li>
-            <a href="">
+            <a href="" ui-sref="system.user" ng-class="{selected: $state.includes('system')}">
                 <img src="resources/images/icon06.png" title="系统设置"/>
                 <h2>系统设置</h2>
             </a>
@@ -71,7 +71,7 @@
 
 <div class="waitTipDiv" id="waitTip">
     <div class="w_loading2">
-        <div class="card"> <span class="hexdots-loader">Loading…</span> </div>
+        <div class="card"><span class="hexdots-loader">Loading…</span></div>
     </div>
 </div>
 
@@ -89,7 +89,7 @@
 <script type="text/javascript" src="app/menu-ctrl.js"></script>
 <script type="text/javascript" src="app/home/dashboard-ctrl.js"></script>
 <script type="text/javascript" src="app/system/user-manager-ctrl.js"></script>
-
+<script type="text/javascript" src="app/system/role-manager-ctrl.js"></script>
 
 
 </body>

@@ -22,15 +22,22 @@ var appStates = {
                 templateUrl: 'app/system/menu.html'
             },
             "right": {
-                template: '<div class="content"><div ui-view></div></div>'
+                templateUrl: 'app/system/content.html'
             }
-        }
+        },
+        label: "系统管理"
     },
     'system.user': {
         url: '/user',
         templateUrl: 'app/system/user-manager.html',
         controller: 'userManagerController',
         label: "用户管理"
+    },
+    'system.role': {
+        url: '/role',
+        templateUrl: 'app/system/role-manager.html',
+        controller: 'roleManagerController',
+        label: "角色管理"
     },
     'test': {
         url: "/test",

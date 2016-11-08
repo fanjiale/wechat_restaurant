@@ -1,7 +1,7 @@
 var diamond = angular.module('diamond', ['ui.router']);
 diamond
     .config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
-        $urlRouterProvider.otherwise('/system/content');
+        $urlRouterProvider.otherwise('/system/user');
 
         for (var key in appStates) {
             if (appStates.hasOwnProperty(key)) {
