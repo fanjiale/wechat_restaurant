@@ -53,50 +53,15 @@
 
     </div>
 </div>
+
 <div class="main">
-    <div class="mainLeft">
-        <div class="lefttop"><span></span>导航栏</div>
+    <!--菜单-->
+    <div ui-view="left"></div>
 
-        <dl class="leftmenu" style="padding-bottom:inherit;margin-bottom:inherit;">
-            <dd>
-                <!--一级菜单-->
-                <div class="title"><span><img src="resources/images/leftico01.png" /></span>管理信息</div>
-                <!--二级菜单-->
-                <ul class="menuson open">
-                    <li class="active"><cite></cite><a href="">数据列表</a><i></i></li>
-                    <li><cite></cite><a href="">图片数据表</a><i></i></li>
-                </ul>
-            </dd>
-            <dd>
-                <div class="title"><span><img src="resources/images/leftico02.png" /></span>日期管理</div>
-                <ul class="menuson">
-                    <li><cite></cite><a href="">自定义</a><i></i></li>
-                    <li><cite></cite><a href="">常用资料</a><i></i></li>
-                    <li><cite></cite><a href="">信息列表</a><i></i></li>
-                    <li><cite></cite><a href="">其他</a><i></i></li>
-
-                    <!--三级菜单-->
-                    <!--<li>
-                        <div class="header">
-                            <cite></cite>
-                            <a href="index.html" target="rightFrame">首页模版</a>
-                            <i></i>
-                        </div>
-                        <ul class="sub-menus">
-                            <li><a href="javascript:;">文件管理</a></li>
-                            <li><a href="javascript:;">模型信息配置</a></li>
-                            <li><a href="javascript:;">基本内容</a></li>
-                            <li><a href="javascript:;">自定义</a></li>
-                        </ul>
-                    </li>-->
-                </ul>
-            </dd>
-        </dl>
-    </div>
-    <div class="content">
-        <div ui-view></div>
-    </div>
+    <!--主体-->
+    <div ui-view="right"></div>
 </div>
+
 <div class="bottom">
     <div class="footer">
         <span>仅供学习交流，请勿用于任何商业用途</span>
@@ -120,7 +85,11 @@
 <script type="text/javascript" src="app/appStates.js"></script>
 <script type="text/javascript" src="app/diamond.js"></script>
 <script type="text/javascript" src="app/main.js"></script>
-<script type="text/javascript" src="app/home/dashboard.js"></script>
+
+<script type="text/javascript" src="app/menu-ctrl.js"></script>
+<script type="text/javascript" src="app/home/dashboard-ctrl.js"></script>
+<script type="text/javascript" src="app/system/user-manager-ctrl.js"></script>
+
 
 
 </body>
