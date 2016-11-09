@@ -32,6 +32,14 @@ diamond.directive('ngTable', function () {
                     console.log(newVlaue);
                 });
             }
+        },
+        controller : function ($scope) {
+            var config = $scope.tableconfigs;
+
+
+
+
+            var name = "sadasd";
         }
     }
 }).directive('tableContent', function () {
