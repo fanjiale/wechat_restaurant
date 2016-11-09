@@ -11,6 +11,10 @@
     <link href="resources/css/style.css" rel="stylesheet" type="text/css"/>
     <link href="resources/css/common.css" rel="stylesheet" type="text/css"/>
     <style type="text/css">
+        [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak, .ng-hide:not(.ng-animate) {
+            display: none !important;
+
+        }
     </style>
 </head>
 <body ng-app="diamond">
@@ -18,7 +22,7 @@
     <div class="topleft">
         <a href=""><img src="resources/images/logo.png" title="系统首页"/></a>
     </div>
-    <ul class="nav">
+    <ul class="nav" ng-cloak>
         <li>
             <a href="" ui-sref="home.dashboard" ui-sref-active="selected">
                 <img src="resources/images/icon02.png" title="首页"/>
@@ -56,10 +60,10 @@
 
 <div class="main">
     <!--菜单-->
-    <div ui-view="left"></div>
+    <div ng-cloak ui-view="left"></div>
 
     <!--主体-->
-    <div ui-view="right"></div>
+    <div ng-cloak ui-view="right"></div>
 </div>
 
 <div class="bottom">
@@ -85,6 +89,9 @@
 <script type="text/javascript" src="app/appStates.js"></script>
 <script type="text/javascript" src="app/diamond.js"></script>
 <script type="text/javascript" src="app/main.js"></script>
+
+
+<script type="text/javascript" src="app/directive/ng-table.js"></script>
 
 <script type="text/javascript" src="app/menu-ctrl.js"></script>
 <script type="text/javascript" src="app/home/dashboard-ctrl.js"></script>
