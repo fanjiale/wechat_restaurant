@@ -38,21 +38,23 @@ public class LoginController {
     @RequestMapping(value = "userlogin", method = RequestMethod.POST)
     @ResponseBody
     public Result login(@RequestBody JSONObject userInfo, HttpSession session, HttpServletRequest request) {
-        logger.info("用户" + userInfo.getString("username") + "请求登录");
+        logger.info("用户" + userInfo.getString("user_code") + "请求登录");
         Result result = new Result();
 
-        String username = userInfo.getString("username");
+        String user_code = userInfo.getString("user_code");
         String password = userInfo.getString("password");
 
-        if (StringUtils.isEmpty(username) || StringUtils.isEmpty(password)) {
+        if (StringUtils.isEmpty(user_code) || StringUtils.isEmpty(password)) {
             result.setErrorMsg("用户名或密码不能为空！");
         }
-        if (userService.validateUserInfo(username, password)) {
-            loginLogService.recordUserLoginLog(username, request);
+        if (userService.validateUserInfo(user_code, password)) {
+            JSONObject user = userService.findUserByUserCode(user_code);
 
-            session.setAttribute("AuthenticatedAccount", username);
+            loginLogService.recordUserLoginLog(user, request);
 
-            result.put("username", username);
+            session.setAttribute("AuthenticatedAccount", user_code);
+
+            result.put("user_code", user_code);
         } else {
             result.setErrorMsg("用户名或密码错误！");
         }

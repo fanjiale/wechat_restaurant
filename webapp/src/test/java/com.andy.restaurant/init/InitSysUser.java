@@ -24,10 +24,11 @@ public class InitSysUser extends AbstractTestNGSpringContextTests{
     public void initUser(){
         delete();
 
-        String user_name = "admin";
+        String user_name = "管理员";
+        String user_code = "admin";
         String password = "1";
 
-        userService.createUser(user_name,password);
+        userService.createUser(user_code,user_name,password);
     }
 
     private void delete(){

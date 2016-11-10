@@ -37,6 +37,7 @@
         <property name="sqlLocations">
             <list>
                 <value>classpath:/namedqueries/basicInfo.xml</value>
+                <value>classpath:/namedqueries/s_user.xml</value>
             </list>
         </property>
     </bean>

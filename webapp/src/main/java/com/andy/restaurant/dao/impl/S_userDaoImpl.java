@@ -3,6 +3,8 @@ package com.andy.restaurant.dao.impl;
 import com.alibaba.fastjson.JSONObject;
 import com.andy.restaurant.dao.S_userDao;
 import com.skytech.ark.jdbc.GenericCRUD;
+import com.skytech.ark.jdbc.QueryBuilder;
+import com.skytech.ark.stereotype.jdbc.NamedQuerySQL;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -12,6 +14,9 @@ import java.util.List;
  */
 @Repository
 public class S_userDaoImpl extends GenericCRUD<JSONObject> implements S_userDao {
+
+    @NamedQuerySQL("com.andy.restaurant.dao.impl.list")
+    private String list;
 
     @Override
     protected String getTableName() {
@@ -28,10 +33,25 @@ public class S_userDaoImpl extends GenericCRUD<JSONObject> implements S_userDao 
         return jsonObject;
     }
 
-    public List<JSONObject> listUserByUserName(String username){
+    public List<JSONObject> listUserByUserCode(String user_code) {
         JSONObject condition = new JSONObject();
-        condition.put("username", username);
+        condition.put("user_code", user_code);
 
         return list(condition);
+    }
+
+    @Override
+    public JSONObject list(int page, int count, String sort, String order, JSONObject condition) {
+        if(condition.getString("user_name") == null){
+            QueryBuilder builder = new QueryBuilder();
+            builder.addOrder(sort,order);
+
+            return listPage(new JSONObject(),builder, page, count);
+        }
+        else {
+            condition.put("sort", sort);
+            condition.put("order", order);
+            return listPage(list, condition, page, count);
+        }
     }
 }

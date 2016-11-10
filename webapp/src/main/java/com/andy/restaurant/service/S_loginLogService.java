@@ -1,5 +1,7 @@
 package com.andy.restaurant.service;
 
+import com.alibaba.fastjson.JSONObject;
+
 import javax.servlet.http.HttpServletRequest;
 
 /**
@@ -9,8 +11,8 @@ public interface S_loginLogService {
     /**
      * 记录用户登录
      *
-     * @param username
+     * @param user
      * @param request
      */
-    void recordUserLoginLog(String username, HttpServletRequest request);
+    void recordUserLoginLog(JSONObject user, HttpServletRequest request);
 }

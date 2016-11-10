@@ -10,5 +10,7 @@ import java.util.List;
  */
 public interface S_userDao extends IGenericDAO<JSONObject> {
 
-    List<JSONObject> listUserByUserName(String username);
+    List<JSONObject> listUserByUserCode(String username);
+
+    JSONObject list(int page, int count, String sort, String order, JSONObject condition);
 }
