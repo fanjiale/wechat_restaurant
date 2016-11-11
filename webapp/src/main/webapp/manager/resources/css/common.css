@@ -7,6 +7,11 @@ body {
     margin: 0;
     padding: 0;
 }
+
+html {
+    font-size: inherit;
+}
+
 td, th {
     font-size: 1.4em;
 }

@@ -1,17 +1,7 @@
 diamond.controller('userManagerController', function ($rootScope, $scope, $log, $loggedHttp) {
 
     $scope.initPageNum = 1;
-    $scope.initpageSize = 10;
-
-    $scope.list = [
-        {
-            code: '1213123',
-            title: '王金平幕僚：马英九声明字字见血 人活着没意思',
-            user: 'admin',
-            address: '江苏南京',
-            time: '2013-09-09 15:05'
-        }
-    ];
+    $scope.initpageSize = 1;
 
     $scope.tableconfigs = {
         page: $scope.initPageNum,
@@ -19,6 +9,7 @@ diamond.controller('userManagerController', function ($rootScope, $scope, $log, 
         sort: "create_time",
         order : "desc",
         getData: function ($defer, params) {
+            $scope.tableGridContext = params;
             var condition = {};
             var param = {
                 page: params.page(),
@@ -35,5 +26,12 @@ diamond.controller('userManagerController', function ($rootScope, $scope, $log, 
                 $defer.resolve(data.items);
             });
         }
+    };
+
+
+
+
+    $scope.batchRemove = function () {
+        var datas = $scope.tableGridContext.data();
     }
 });

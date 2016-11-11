@@ -6,6 +6,7 @@ import com.skytech.ark.jdbc.GenericCRUD;
 import com.skytech.ark.jdbc.QueryBuilder;
 import com.skytech.ark.stereotype.jdbc.NamedQuerySQL;
 import org.springframework.stereotype.Repository;
+import org.springframework.util.StringUtils;
 
 import java.util.List;
 
@@ -42,6 +43,10 @@ public class S_userDaoImpl extends GenericCRUD<JSONObject> implements S_userDao 
 
     @Override
     public JSONObject list(int page, int count, String sort, String order, JSONObject condition) {
+        if(StringUtils.isEmpty(sort)){
+            sort = "";
+            order = "asc";
+        }
         if(condition.getString("user_name") == null){
             QueryBuilder builder = new QueryBuilder();
             builder.addOrder(sort,order);
