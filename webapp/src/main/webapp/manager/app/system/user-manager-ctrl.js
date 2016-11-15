@@ -1,5 +1,18 @@
 diamond.controller('userManagerController', function ($rootScope, $scope, $log, $loggedHttp) {
 
+
+    init();
+
+    function init() {
+        initTableHeight();
+    }
+
+    function initTableHeight() {
+        $scope.tableContentHieght = {
+            height : $('.content ').height()  -$('.place ').height()- $('.tools ').height() - 24
+        }
+    }
+
     $scope.initPageNum = 1;
     $scope.initpageSize = 1;
 
@@ -27,9 +40,6 @@ diamond.controller('userManagerController', function ($rootScope, $scope, $log, 
             });
         }
     };
-
-
-
 
     $scope.batchRemove = function () {
         var datas = $scope.tableGridContext.data();

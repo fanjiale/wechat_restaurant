@@ -21,7 +21,7 @@
 .sort{padding-left:3px;}
 
 
-.pagin{position: absolute;bottom: 0;width: 100%;font-size: 1.4em;}
+.pagin{position: absolute;bottom: 0;width: 100%;font-size: 1.4em;height: 21px;}
 .pagin .blue{color:#EB5409;font-style:normal;}
 .pagin .paginList{position:absolute;right:12px;top:0;}
 .pagin .paginList .paginItem{float:left;}

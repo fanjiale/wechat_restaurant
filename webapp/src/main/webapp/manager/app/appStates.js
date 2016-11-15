@@ -39,6 +39,24 @@ var appStates = {
         controller: 'roleManagerController',
         label: "角色管理"
     },
+    'workbench' : {
+        url : '/workbench',
+        views : {
+            "left": {
+                templateUrl: 'manager/app/workbench/menu.html'
+            },
+            "right": {
+                templateUrl: 'manager/app/workbench/content.html'
+            }
+        },
+        label: "工作台"
+    },
+    'workbench.config': {
+        url: '/config',
+        templateUrl: 'manager/app/workbench/config-manager.html',
+        controller: 'configManagerController',
+        label: "配置管理"
+    },
     'test': {
         url: "/test",
         views: {

@@ -3,9 +3,9 @@ $(function () {
 });
 
 function showWaitWindow() {
-    $('#waitTip').show();
+    $('#waitTip').eq($('#waitTip').length -1 ).show();
 }
 
 function hideWaitWindow() {
-    $('#waitTip').hide();
+    $('#waitTip').eq($('#waitTip').length -1 ).hide();
 }
