@@ -374,3 +374,32 @@ h2{font-weight:normal;}
 .footer{background:#F9ECD9; height:30px; border-top:solid 1px #ECCAAA; line-height:30px; color:#101112;}
 .footer span{display:block; float:left; background:url(../images/info.png) no-repeat 11px 8px; padding-left:35px;}
 .footer i{display:block; float:right; font-style:normal; margin-right:10px; background:url(../images/fjt.png) no-repeat right; padding-right:12px; }
+
+
+.menu1,.menu2,.menu3{width:114px; height:88px; float:left; display:block; margin:0 25px 10px 0px;}
+.menu1{ background:url(../images/menu1.png) no-repeat;}
+.menu2{ background:url(../images/menu2.png) no-repeat;}
+.menu3{ background:url(../images/menu3.png) no-repeat;}
+
+.clear{  clear:both}
+
+.content_config{ position:relative;border:1px solid #d9d9d9; background:#fefefe;padding:20px;  text-align:left; left:0px;}
+.content_config b{ background:url(../images/icon-top.png) no-repeat;width:21px; height:15px; position: absolute; top:-15px; display:block;}
+.content_config b.left1{left:46px;}
+.content_config b.left2{left:184px;}
+.content_config b.left3{left:323px;}
+
+.content_config .active {
+    display: block;
+}
+
+.MenuRe_left{ font-size:14px;color:#797979;width:40%; float:left;display: none; }
+.MenuRe_left li{padding:6px 0px;padding-left:50px;}
+
+.CacheRe_left{ font-size:14px;color:#797979;width:40%; float:left;display: none; }
+.CacheRe_left li{padding:6px 0px;padding-left:50px;}
+
+
+.QRcode_left{ font-size:14px;color:#797979;width:40%; float:left;display: none; }
+.QRcode_left li{padding:6px 0px;padding-left:50px;}
+.QRcode_right{ font-size:14px;color:#797979;width:60%;float:left;display: none;}
