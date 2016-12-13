@@ -123,7 +123,7 @@ public class XMLMsgReplyConfigLoader {
 		defalutMsgReply.setMsgContent(defaultRespMsgContent);
 		defalutMsgReply.setMsgType(defaultRespMsgType);
 		
-		List<Node> articles = root.selectNodes("./DefaultRespArticles/item");
+		List<Node> articles = root.selectNodes("./DefaultRespArticles/Articles/item");
 		List<Article> articleList = new ArrayList<Article>();
 		if(articles != null && articles.size() > 0){
 			for (Node item : articles) {

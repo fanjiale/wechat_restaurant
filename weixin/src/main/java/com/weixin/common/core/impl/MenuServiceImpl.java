@@ -36,8 +36,7 @@ public class MenuServiceImpl implements MenuService{
 		initBaseInfo();
 		initMenuList();
 		buildMenu();
-		int result =  wxService.createMenu(menu);
-		return result;
+		return wxService.createMenu(menu);
 	}
 
 	/**

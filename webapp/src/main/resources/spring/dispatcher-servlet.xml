@@ -76,6 +76,7 @@
                         <value>login</value>
                         <value>userlogin</value>
                         <value>logout</value>
+                        <value>weixinControl/dealRequest</value>
                     </array>
                 </property>
                 <property name="login_url" value="userlogin" />

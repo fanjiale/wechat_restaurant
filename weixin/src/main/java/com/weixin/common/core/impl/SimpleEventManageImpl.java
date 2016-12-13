@@ -144,7 +144,7 @@ public class SimpleEventManageImpl implements SimpleEventManage{
 	/**
 	 * 构造图文回复
 	 * @param ur
-	 * @param eventReply
+	 * @param arts
 	 * @return
 	 */
 	private String bulidNewsMsg(UserRequest ur,List<Article> arts){

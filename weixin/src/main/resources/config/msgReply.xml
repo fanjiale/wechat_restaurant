@@ -6,18 +6,18 @@
 	<DefaultRespMsgContent>
 		1、 功能1 
 		2 、功能2
-		3、 功能3
+		3、 功能333
 		4、 功能4
 	</DefaultRespMsgContent>
 	<DefaultRespArticles>
 		<Articles>
 			<item>
 				<!-- 图文标题 -->
-				<Title/>
+				<Title>asadasd</Title>
 				<!-- 图文描述 -->
-				<Description/>
+				<Description>asdasdasd</Description>
 				<!-- 图片地址 -->
-				<PicUrl/>
+				<PicUrl>asdasds</PicUrl>
 				<!-- 跳转地址 -->
 				<Url/>
 			</item>

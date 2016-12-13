@@ -1,19 +1,20 @@
 package com.weixin.common.mapper;
 
-import java.util.HashMap;
-import java.util.Map;
+import com.weixin.common.model.token.AccessToken;
 
 public interface AccessTokenMapper {
 
 	/**
-	 * 获取更新AccessToken的配置
+	 * 获取AccessToken
 	 * @return
 	 */
-	HashMap<String,Object> getAccessTokenConfig(int type);
+	AccessToken getAccessToken();
 	
 	/**
 	 * 更新AccessToken
 	 * @param accessToken
 	 */
-	void updateAccessToken(Map<String,Object> param);
+	void updateAccessToken(AccessToken accessToken);
+
+	void insertAccessToken(AccessToken accessToken);
 }

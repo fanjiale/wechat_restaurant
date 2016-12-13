@@ -52,8 +52,8 @@
 <div class="rightinfo">
     <div class="main_config">
         <div class="menu_config">
-            <a class="menu1" href="" ng-click="selectMenu('1')" title="刷新配置"></a>
-            <a class="menu2" href="" ng-click="selectMenu('2')" title="更新菜单"></a>
+            <a class="menu2" href="" ng-click="selectMenu('1')" title="更新菜单"></a>
+            <a class="menu1" href="" ng-click="selectMenu('2')" title="刷新配置"></a>
             <a class="menu3" href="" ng-click="selectMenu('3')" title="二维码生成"></a>
         </div>
         <div class="content_config ng-scope">
@@ -63,7 +63,7 @@
                     <li>更新微信公众号菜单：</li>
                     <li>
                         <input type="submit" name="rmButton" id="rmButton" value="更新" class="btnc"
-                               onclick="refreshMenu()">
+                               ng-click="refreshMenu()">
                     </li>
                 </ul>
             </div>
@@ -72,7 +72,7 @@
                     <li>刷新服务器配置：</li>
                     <li>
                         <input type="submit" name="rcButton" id="rcButton" value="刷新" class="btnc"
-                               onclick="refreshConfig()">
+                               ng-click="refreshConfig()">
                     </li>
                 </ul>
             </div>

@@ -9,6 +9,13 @@ import com.weixin.common.model.menu.Menu;
 import com.weixin.common.model.token.AccessToken;
 
 public interface WxService {
+
+	/**
+	 * 获取AccessToken
+	 * @return AccessToken
+	 */
+	public String getAccessToken();
+
 	/**
 	 * 获取AccessToken
 	 * @param appid

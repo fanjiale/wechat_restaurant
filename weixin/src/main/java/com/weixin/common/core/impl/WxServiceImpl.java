@@ -1,6 +1,7 @@
 package com.weixin.common.core.impl;
 
 import java.io.File;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -28,13 +29,40 @@ public class WxServiceImpl implements WxService{
 	@Autowired
 	private AccessTokenMapper accessTokenMapper;
 	
-	private String getAccessToken(){
-		/*HashMap<String,Object> map =  accessTokenMapper.getAccessTokenConfig(CommonConstants.ACCESS_TOKEN_TYPE_NORMAL);
-		return map.get("ACCESS_TOKEN")==null?"":String.valueOf(map.get("ACCESS_TOKEN"));*/
-		
-		return getAccessToken(XMLConfigLoader
-				.getBaseConfig().getAppid(), XMLConfigLoader
-				.getBaseConfig().getSecret()).getToken();
+	public String getAccessToken(){
+		AccessToken accessToken = accessTokenMapper.getAccessToken();
+
+		if(accessToken != null){
+			long t1 = accessToken.getLast_date().getTime();
+			long t2 = new Date().getTime();
+			double t3 = accessToken.getPeriod();
+
+			//access_token 有效期为7200s，这里以3600s来判断
+			if((t2 -t1)/1000 < 3600){
+				return accessToken.getAccess_token();
+			}
+
+			AccessToken lastAccessToken = getAccessToken(XMLConfigLoader
+					.getBaseConfig().getAppid(), XMLConfigLoader
+					.getBaseConfig().getSecret());
+
+			lastAccessToken.setId(accessToken.getId());
+			lastAccessToken.setLast_date(new Date());
+			accessTokenMapper.updateAccessToken(lastAccessToken);
+
+			return lastAccessToken.getAccess_token();
+		}
+		else {
+			AccessToken lastAccessToken = getAccessToken(XMLConfigLoader
+					.getBaseConfig().getAppid(), XMLConfigLoader
+					.getBaseConfig().getSecret());
+
+			lastAccessToken.setLast_date(new Date());
+			accessTokenMapper.insertAccessToken(lastAccessToken);
+			return lastAccessToken.getAccess_token();
+		}
+
+
 	}
 	
 	/**
@@ -52,8 +80,8 @@ public class WxServiceImpl implements WxService{
 		if (null != jsonObject) {
 			try {
 				accessToken = new AccessToken();
-				accessToken.setToken(jsonObject.getString("access_token"));
-				accessToken.setExpiresIn(jsonObject.getInt("expires_in"));
+				accessToken.setAccess_token(jsonObject.getString("access_token"));
+				accessToken.setPeriod(jsonObject.getDouble("expires_in"));
 			} catch (Exception e) {
 				accessToken = null;
 				// 获取token失败
@@ -67,7 +95,7 @@ public class WxServiceImpl implements WxService{
 	
 	/**
 	 * 使用code换取AccessToken
-	 * @param appid
+	 * @param appID
 	 * @param appsecret
 	 * @param code
 	 * @return Map<String,Object>
@@ -103,7 +131,7 @@ public class WxServiceImpl implements WxService{
 	
 	/**
 	 * 调用客服接口
-	 * @param accessToken
+	 * @param msgInfo
 	 * @param msgInfo
 	 */
 	public Map<String,Object> sendCustService(String msgInfo){
@@ -126,7 +154,6 @@ public class WxServiceImpl implements WxService{
 	
 	/**
 	 * 获取二维码
-	 * @param accessToken
 	 * @param jsonMsg
 	 * @return JSONObject
 	 */
@@ -163,7 +190,6 @@ public class WxServiceImpl implements WxService{
 	/**
 	 * 创建菜单 
 	 * @param menu
-	 * @param accessToken
 	 * @return int
 	 */
 	public int createMenu(Menu menu){
@@ -211,7 +237,6 @@ public class WxServiceImpl implements WxService{
 	/**
      * 微信服务器素材上传
      * @param file  表单名称media
-     * @param token access_token
      * @param type  type只支持四种类型素材(video/image/voice/thumb)
      */
     public  JSONObject uploadMedia(File file,String type) {

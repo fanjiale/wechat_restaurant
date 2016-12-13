@@ -21,14 +21,6 @@ public class RequestController {
 
 	@Autowired
 	CoreService coreService;
-	
-	public CoreService getCoreService() {
-		return coreService;
-	}
-
-	public void setCoreService(CoreService coreService) {
-		this.coreService = coreService;
-	}
 
 	/**
 	 * 处理请求

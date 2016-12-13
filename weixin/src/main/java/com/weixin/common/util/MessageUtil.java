@@ -118,7 +118,7 @@ public class MessageUtil {
 		String createTime = requestMap.get("CreateTime");
 		// 请求地址
 		String requestUrl = request.getRequestURL().toString();
-		requestUrl = requestUrl.replace(request.getRequestURI(), "") + request.getContextPath().toString();
+		requestUrl = requestUrl.replace(request.getRequestURI(), "") + request.getContextPath();
 		UserRequest ur = new UserRequest();
 		ur.setFromUserName(fromUserName);
 		ur.setToUserName(toUserName);

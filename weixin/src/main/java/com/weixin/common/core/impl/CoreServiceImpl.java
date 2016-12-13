@@ -22,13 +22,6 @@ public class CoreServiceImpl implements CoreService{
 
 	@Autowired
 	private SimpleEventManage simpleEventManage;
-	public SimpleEventManage getSimpleEventManage() {
-		return simpleEventManage;
-	}
-
-	public void setSimpleEventManage(SimpleEventManage simpleEventManage) {
-		this.simpleEventManage = simpleEventManage;
-	}
 
 	/**
 	 * 处理微信发来的请求

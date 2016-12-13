@@ -28,7 +28,7 @@ public class UpdateAccessTokenTask {
      * 更新AccessToken
      */
     public void update() {
-        try {
+        /*try {
             HashMap<String, Object> config = accessTokenMapper.getAccessTokenConfig(CommonConstants.ACCESS_TOKEN_TYPE_NORMAL);
             if (checkIsSelfServerTask(config)) {
                 AccessToken at = wxService.getAccessToken(XMLConfigLoader.getBaseConfig().getAppid(), XMLConfigLoader.getBaseConfig().getSecret());
@@ -47,7 +47,7 @@ public class UpdateAccessTokenTask {
             }
         } catch (Throwable e) {
             e.printStackTrace();
-        }
+        }*/
     }
 
     /**

@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
  * Created by Andy on 2016/11/10.
  */
 @RestController
-@RequestMapping(value = "/menu")
+@RequestMapping(value = "/menu1")
 public class ConfigController {
 
     private static final Logger logger = LoggerFactory.getLogger(ConfigController.class);
