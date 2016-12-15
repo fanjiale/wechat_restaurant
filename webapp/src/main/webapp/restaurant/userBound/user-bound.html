@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>账号绑定</title>
+    <meta charset="utf-8"/>
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="expires" content="0">
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="This is my page">
+    <meta name="viewport" content="width=device-width,initial-scale=0.5, minimum-scale=0.5, maximum-scale=0.5"/>
+
+    <link href="resources/css/style.css" rel="stylesheet" type="text/css"/>
+</head>
+
+<body>
+<div ng-controller="userBoundController">
+    <div class="bound_box1">
+        <span class="bound_font1">手机号码</span>
+    </div>
+    <div class="bound_box2">
+        <input name="accNbr" type="tel" class="bound_input1" style="color: black" id="productNo" placeholder="请输入手机号码" maxlength="11"
+               onkeyup="this.value=this.value.replace(/[^\d]/g,'')" onafterpaste="this.value=this.value.replace(/[^\d]/g,'')">
+    </div>
+    <div class="bound_box1">
+        <span class="bound_font1">鲜果乐账号</span>
+    </div>
+    <div class="bound_box2">
+        <input type="text" class="bound_input1" value="2112312" readonly>
+    </div>
+    <div class="bound_box1">
+        <span class="bound_font1">验证码</span>
+    </div>
+    <div class="bound_box2">
+        <div style="float: left;">
+            <input name="verCode" type="text" class="bound_input1" style="color: black" id="verCode" placeholder="请输入验证码" maxlength="6"
+                   onkeyup="this.value=this.value.replace(/[^\d]/g,'')" onafterpaste="this.value=this.value.replace(/[^\d]/g,'')">
+        </div>
+        <div style="float: right;" id="verCodeBtn" >
+            <input type="button" class="bound_input2" value="获取验证码" onclick="getVerCode()" />
+        </div>
+    </div>
+    <div class="bound_box1">
+        <input name="boundNbrBtn" type="button" class="bound_input3"  value="绑定手机" ng-click="boundUserNum()">
+    </div>
+</div>
+
+<script type="text/javascript" src="../../lib/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../../lib/angular/angular.js"></script>
+<script type="text/javascript" src="user-bound.js"></script>
+</body>
+</html>

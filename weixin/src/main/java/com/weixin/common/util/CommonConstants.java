@@ -20,7 +20,7 @@ public class CommonConstants {
 
 	
 	//用户绑定界面地址
-	public static final String USER_BOUND_URL = "userBound/userBound.jsp";
+	public static final String USER_BOUND_URL = "restaurant/userBound/user-bound.html";
 	
 	//Session属性
 	public static final String SESSION_ATTR_ACCNBR = "accnbr";
