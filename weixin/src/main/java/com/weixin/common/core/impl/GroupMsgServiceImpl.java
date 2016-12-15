@@ -12,8 +12,8 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletResponse;
 
-import net.sf.json.JSONObject;
 
+import com.alibaba.fastjson.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -64,7 +64,7 @@ public class GroupMsgServiceImpl implements GroupMsgService {
 		if(groupId != null){
 			groupMessage.setGroupId(groupId);
 		}
-		String resultJson = wxService.sendMsgByGroupId(json).toString();
+		String resultJson = wxService.sendMsgByGroupId(json).toJSONString();
 		Gson gson = MpGsonBuilder.create();
 		MpMassSendResult result = gson.fromJson(resultJson, MpMassSendResult.class);
 		return result;
@@ -85,7 +85,7 @@ public class GroupMsgServiceImpl implements GroupMsgService {
 		}
 		openidsMessage.setMsgType(msgType);
 		String  json = openidsMessage.toJson(); 
-		String resultJson = wxService.sendMsgByOpenids(json).toString();
+		String resultJson = wxService.sendMsgByOpenids(json).toJSONString();
 		Gson gson = MpGsonBuilder.create();
 		MpMassSendResult result = gson.fromJson(resultJson, MpMassSendResult.class);
 		return result;
@@ -152,7 +152,7 @@ public class GroupMsgServiceImpl implements GroupMsgService {
 		}
 		String json = massNews.toJson();
 		Gson gson = MpGsonBuilder.create();
-		String resultJson = wxService.uploadNews(json).toString();
+		String resultJson = wxService.uploadNews(json).toJSONString();
 		MpMassUploadResult result = gson.fromJson(resultJson, MpMassUploadResult.class);
 		if(result.getErrCode() != null && !"0".equals(result.getErrCode())){
 			retMap.put(CommonConstants.ERR_CODE, result.getErrCode());
@@ -216,7 +216,7 @@ public class GroupMsgServiceImpl implements GroupMsgService {
 		retMap.put(CommonConstants.ERR_CODE, "0");
 		JSONObject json = wxService.uploadMedia(file, type);
 		Gson gson = MpGsonBuilder.create();
-		MpMassUploadResult result = gson.fromJson(json.toString(), MpMassUploadResult.class);
+		MpMassUploadResult result = gson.fromJson(json.toJSONString(), MpMassUploadResult.class);
 		if(result.getMediaId() != null  && !"".equals(result.getMediaId())){
 			MassEvent me = massMapper.selectMassEventById(massId);
 			List<MaterialContent> mc = massMapper.selectMaterialContentByMassId(massId);
@@ -242,7 +242,7 @@ public class GroupMsgServiceImpl implements GroupMsgService {
 		retMap.put(CommonConstants.ERR_CODE, "0");
 		JSONObject json = wxService.uploadMedia(file, type);
 		Gson gson = MpGsonBuilder.create();
-		MpMassUploadResult result = gson.fromJson(json.toString(), MpMassUploadResult.class);
+		MpMassUploadResult result = gson.fromJson(json.toJSONString(), MpMassUploadResult.class);
 		if(result.getMediaId() != null  && !"".equals(result.getMediaId())){
 			MaterialContent mc = massMapper.selectMaterialContent(meterialId);
 			mc.setMediaId(result.getMediaId());

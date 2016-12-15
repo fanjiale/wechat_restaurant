@@ -22,8 +22,10 @@ public class MenuServiceImpl implements MenuService{
 
 	private static List<MenuConfig> menuList;
 	private static Menu menu;
+
 	@Autowired
 	private ConfigLoader configLoader;
+
 	@Autowired
 	private WxService wxService;
 

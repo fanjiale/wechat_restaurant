@@ -7,12 +7,12 @@
 		<!-- 回复消息类型 -->
 		<MsgType>news</MsgType>
 		<!-- 消息内容 -->
-		<MsgContent>亲，终于等到您啦!欢迎您加入“江苏电信增值业务办公助手”微信公众帐号！</MsgContent>
+		<MsgContent>欢迎欢迎！热烈欢迎！</MsgContent>
 		<!-- 图文内容 -->
 		<Articles>
 			<item>
 				<!-- 标题 -->
-				<Title>江苏电信增值助手</Title>
+				<Title>欢迎您！</Title>
 				<!-- 描述 -->
 				<Description>欢迎访问！</Description>
 				<!-- 图片地址 -->

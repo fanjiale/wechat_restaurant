@@ -2,8 +2,8 @@ package com.weixin.common.core.impl;
 
 import java.util.Map;
 
-import net.sf.json.JSONObject;
 
+import com.alibaba.fastjson.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -112,7 +112,7 @@ public class AsyncReplyManageImpl implements AsyncReplyManage{
 	/**
 	 * 调用处理的方法，节点未定待开发，暂且模拟数据返回
 	 * @param userRequest：用户请求对象
-	 * @param url：处理地址
+	 * @param replyConfig：处理地址
 	 * @return
 	 */
 	private String callRealizationMethod(UserRequest userRequest, ReplyConfig replyConfig){
@@ -120,8 +120,8 @@ public class AsyncReplyManageImpl implements AsyncReplyManage{
 		try{
 			String url = replyConfig.getAsyncUrl();
 			if(url != null && !url.equals("")){
-				JSONObject requestJson = JSONObject.fromObject(userRequest);
-				JSONObject jsonObject = HttpUtils.httpRequest(url, "POST", requestJson.toString());
+				String requestJson = JSONObject.toJSONString(userRequest);
+				JSONObject jsonObject = HttpUtils.httpRequest(url, "POST", requestJson);
 				// 如果请求成功
 				if (null != jsonObject) {
 					
@@ -134,9 +134,8 @@ public class AsyncReplyManageImpl implements AsyncReplyManage{
 			CustTextMessage.TextContent textContent = new CustTextMessage().new TextContent();
 			textContent.setContent(replyConfig.getMsgContent());
 			custTextMessage.setText(textContent);
-			
-			JSONObject custJson = JSONObject.fromObject(custTextMessage);
-			retMsg = custJson.toString();
+
+			retMsg = JSONObject.toJSONString(custTextMessage);
 		}catch(Exception e){
 			e.printStackTrace();
 		}

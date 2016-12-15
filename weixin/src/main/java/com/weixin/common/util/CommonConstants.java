@@ -81,7 +81,7 @@ public class CommonConstants {
 	
 	//关注状态
 	public static final Integer SUBSCRIBE_STATUS = 1; //已关注
-	public static final Integer UNSUBSCRIBE_STATUS = 2; //取消关注
+	public static final Integer UNSUBSCRIBE_STATUS = 0; //取消关注
 	
 	//验证消息类型
 	public static final int VALIDATEMSG_UAM = 0; //UAM接口

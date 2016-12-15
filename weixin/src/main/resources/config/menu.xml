@@ -98,8 +98,8 @@
 				<Key>31</Key>
 				<Name>手机绑定</Name>
 				<Type>view</Type>
-				<Url><![CDATA[http://xmz9172.xicp.net/weixin-manager-web/viewController/uesrAccessController?url=userBound/userBound.jsp]]></Url>
-				<IsOAuthPage></IsOAuthPage>
+				<Url><![CDATA[http://h1532l6172.imwork.net/restaurant/viewController/uesrAccessController?url=userBound/userBound.jsp]]></Url>
+				<IsOAuthPage>Y</IsOAuthPage>
 			</MenuSub>
 			<MenuSub>
 				<Key>32</Key>

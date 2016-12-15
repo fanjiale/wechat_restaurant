@@ -13,34 +13,41 @@ public interface SimpleEventManage {
 	 * @param ur 用户请求内容
 	 * @return
 	 */
-	public String dealRequestDefaultMsg(UserRequest ur);
+	String dealRequestDefaultMsg(UserRequest ur);
+
+	/**
+	 * 处理上报地理位置事件
+	 * @param ur
+	 * @return
+	 */
+	String dealLocationReq(UserRequest ur);
 
 	/**
 	 * Click事件处理
 	 * @param ur 用户请求内容
 	 * @return
 	 */
-	public String dealClickEvent(UserRequest ur);
+	String dealClickEvent(UserRequest ur);
 	
 	/**
 	 * 订阅事件处理
 	 * @param ur 用户请求内容
 	 * @return
 	 */
-	public String dealSubscribeEvent(UserRequest ur);
+	String dealSubscribeEvent(UserRequest ur);
 	
 	/**
 	 * 退订事件处理
 	 * @param ur 用户请求内容
 	 * @return
 	 */
-	public String dealUnSubscribeEvent(UserRequest ur);
+	String dealUnSubscribeEvent(UserRequest ur);
 
 	/**
 	 * 处理文本消息
 	 * @param ur
 	 * @return
 	 */
-	public String dealTextReq(UserRequest ur);
+	String dealTextReq(UserRequest ur);
 	
 }

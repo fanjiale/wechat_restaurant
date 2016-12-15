@@ -3,8 +3,8 @@ package com.weixin.common.core;
 import java.io.File;
 import java.util.Map;
 
-import net.sf.json.JSONObject;
 
+import com.alibaba.fastjson.JSONObject;
 import com.weixin.common.model.menu.Menu;
 import com.weixin.common.model.token.AccessToken;
 

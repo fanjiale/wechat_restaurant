@@ -3,11 +3,8 @@ package com.weixin.common.user.service;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.apache.http.HttpRequest;
-import org.apache.http.HttpResponse;
 import com.andy.common.domains.RspResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -33,17 +30,17 @@ public class UserBoundService {
 	@ResponseBody
 	public RspResult queryBoundAccNbr(HttpSession hs){
 		String openId = hs.getAttribute(CommonConstants.SESSION_ATTR_OPENID).toString();
-		String res =  userBoundSMO.queryBoundAccNbr(openId);
+		String res =  userBoundSMO.queryUserBoundPhoneNum(openId);
 		return RspResult.getSuccessResult().setData(res);
 	}
 	
 	@RequestMapping("insertBoundAccNbr")
 	@ResponseBody
 	public RspResult insertBoundAccNbr(HttpSession hs,UserBound userBound){
-		userBound.setOpenId(hs.getAttribute(CommonConstants.SESSION_ATTR_OPENID).toString());
+		userBound.setOpen_id(hs.getAttribute(CommonConstants.SESSION_ATTR_OPENID).toString());
 		Map<String,Object> map =  userBoundSMO.insertBoundAccNbr(userBound);
 		if(CommonConstants.EXTRACT_SUCESS.equals(String.valueOf(map.get("resultCode")))){
-			hs.setAttribute(CommonConstants.SESSION_ATTR_ACCNBR,userBound.getAccNbr());
+			hs.setAttribute(CommonConstants.SESSION_ATTR_ACCNBR,userBound.getPhone_num());
 		}
 		return RspResult.getSuccessResult().setData(map);
 	}
@@ -58,10 +55,10 @@ public class UserBoundService {
 	@RequestMapping("updateBoundAccNbr")
 	@ResponseBody
 	public RspResult updateBoundAccNbr(HttpSession hs,UserBound userBound){
-		userBound.setOpenId(hs.getAttribute(CommonConstants.SESSION_ATTR_OPENID).toString());
+		userBound.setOpen_id(hs.getAttribute(CommonConstants.SESSION_ATTR_OPENID).toString());
 		Map<String,Object>  map =  userBoundSMO.updateBoundAccNbr(userBound);
 		if(CommonConstants.EXTRACT_SUCESS.equals(String.valueOf(map.get("resultCode")))){
-			hs.setAttribute(CommonConstants.SESSION_ATTR_ACCNBR,userBound.getAccNbr());
+			hs.setAttribute(CommonConstants.SESSION_ATTR_ACCNBR,userBound.getPhone_num());
 		}
 		return RspResult.getSuccessResult().setData(map);
 	}
@@ -78,14 +75,12 @@ public class UserBoundService {
 	}
 	
 	@RequestMapping("saveWechatUser")
-	@ResponseBody
-	public RspResult saveWechatUser(HttpServletRequest request){
+	public void saveWechatUser(HttpServletRequest request){
 		String openId = request.getParameter("openId");
 		String statusCd = request.getParameter("statusCd");
 		WechatUser wechatUser = new WechatUser();
-		wechatUser.setOpenId(openId);
-		wechatUser.setStatusCd(Integer.parseInt(statusCd));
-		Map<String,Object> map = userBoundSMO.saveWechatUser(wechatUser);
-		return RspResult.getSuccessResult().setData(map);
+		wechatUser.setOpen_id(openId);
+		wechatUser.setSubscribe_status(Integer.parseInt(statusCd));
+		userBoundSMO.saveWechatUser(wechatUser);
 	}
 }

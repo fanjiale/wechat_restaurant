@@ -38,7 +38,7 @@ public class RestfulSecurityInterceptor implements HandlerInterceptor {
             }
         }
 
-        String bestMatchPattern = httpServletRequest.getAttribute(BEST_MATCH_PATTERN).toString();
+       /* String bestMatchPattern = httpServletRequest.getAttribute(BEST_MATCH_PATTERN).toString();
         logger.debug("[BEST MATCH] " + bestMatchPattern);
 
         //set current logined user account to thread
@@ -47,7 +47,7 @@ public class RestfulSecurityInterceptor implements HandlerInterceptor {
             //验证用户登录
             httpServletResponse.sendRedirect(httpServletRequest.getContextPath() + "/login");
             return false;
-        }
+        }*/
 
         return true;
     }

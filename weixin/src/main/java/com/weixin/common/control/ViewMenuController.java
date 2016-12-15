@@ -119,7 +119,7 @@ public class ViewMenuController {
 			HttpServletResponse response) throws Exception {
 		String basePath = request.getScheme()+"://"+request.getServerName()+request.getContextPath()+"/";
 		HttpSession hs = request.getSession();
-		String paramOpenid = request.getParameter("openid");
+		String paramOpenid = request.getParameter(CommonConstants.SESSION_ATTR_OPENID);
 		AES aes = new AES(CommonConstants.PASSWORD_ENC);
 		if(paramOpenid != null){
 			hs.setAttribute(CommonConstants.SESSION_ATTR_OPENID, 
@@ -157,11 +157,11 @@ public class ViewMenuController {
 				//不弹出授权页面
 				oAuthValue = CommonConstants.OAUTH_SCOPE_NOPAGE;
 			}
-				
+
+			String redirect_uri = basePath + "viewController/getViewAddrAction?url=" + request.getParameter("url");
 			requestUrl = "https://open.weixin.qq.com/connect/oauth2/authorize?appid="+XMLConfigLoader.getBaseConfig().getAppid()
-					+ "&redirect_uri=" + basePath + "viewController/getViewAddrAction?url=" + request.getParameter("url") + "&response_type=code&scope=" + oAuthValue + "&state=1#wechat_redirect";
-//			response.sendRedirect(requestUrl);
-			response.sendRedirect("http://h1532l6172.imwork.net/restaurant");
+					+ "&redirect_uri=" + redirect_uri + "&response_type=code&scope=" + oAuthValue + "&state=1#wechat_redirect";
+			response.sendRedirect(requestUrl);
 		}else{
 			String openId = hs.getAttribute(CommonConstants.SESSION_ATTR_OPENID).toString();
 			String retUrl = getRedirectUrl(openId, request.getParameter("url"), basePath,request);
@@ -188,7 +188,7 @@ public class ViewMenuController {
 			HttpSession hs = request.getSession();
 			String accNbr =  hs.getAttribute(CommonConstants.SESSION_ATTR_ACCNBR)==null?null:hs.getAttribute(CommonConstants.SESSION_ATTR_ACCNBR).toString();
 			if(accNbr == null || accNbr.length()==0){
-				accNbr = userBoundSMO.queryBoundAccNbr(openId);
+				accNbr = userBoundSMO.queryUserBoundPhoneNum(openId);
 				if(accNbr != null && accNbr.length() > 0){
 					hs.setAttribute(CommonConstants.SESSION_ATTR_ACCNBR, accNbr);
 				}
