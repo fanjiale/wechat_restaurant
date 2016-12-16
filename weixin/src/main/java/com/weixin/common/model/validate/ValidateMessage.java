@@ -1,60 +1,77 @@
 package com.weixin.common.model.validate;
 
 import java.util.Date;
+
 /**
  * 验证码消息
- * @author H
  *
+ * @author H
  */
 public class ValidateMessage {
-	//与表中MSG_ID对应
-	private Long msgId;
-	//关注者openid
-	private String openId;
-	//关注着号码
-	private String accNbr;
-	//验证码
-	private String vCode;
-	//创建时间
-	private Date createDate;
-	//失效时间
-	private int expTime;
-	
-	public int getExpTime() {
-		return expTime;
-	}
-	public void setExpTime(int expTime) {
-		this.expTime = expTime;
-	}
-	public String getOpenId() {
-		return openId;
-	}
-	public void setOpenId(String openId) {
-		this.openId = openId;
-	}
-	
-	public Long getMsgId() {
-		return msgId;
-	}
-	public void setMsgId(Long msgId) {
-		this.msgId = msgId;
-	}
-	public String getAccNbr() {
-		return accNbr;
-	}
-	public void setAccNbr(String accNbr) {
-		this.accNbr = accNbr;
-	}
-	public String getvCode() {
-		return vCode;
-	}
-	public void setvCode(String vCode) {
-		this.vCode = vCode;
-	}
-	public Date getCreateDate() {
-		return createDate;
-	}
-	public void setCreateDate(Date createDate) {
-		this.createDate = createDate;
-	}
+
+    //与表中MSG_ID对应
+    private Long id;
+
+    //关注者openid
+    private String open_id;
+
+    //关注着号码
+    private String phone_num;
+
+    //验证码
+    private String ver_code;
+
+    //有效期
+    private int expires_in;
+
+    //创建时间
+    private Date create_time;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getOpen_id() {
+        return open_id;
+    }
+
+    public void setOpen_id(String open_id) {
+        this.open_id = open_id;
+    }
+
+    public String getPhone_num() {
+        return phone_num;
+    }
+
+    public void setPhone_num(String phone_num) {
+        this.phone_num = phone_num;
+    }
+
+    public String getVer_code() {
+        return ver_code;
+    }
+
+    public void setVer_code(String ver_code) {
+        this.ver_code = ver_code;
+    }
+
+    public Date getCreate_time() {
+        return create_time;
+    }
+
+    public void setCreate_time(Date create_time) {
+        this.create_time = create_time;
+    }
+
+    public int getExpires_in() {
+        return expires_in;
+    }
+
+    public void setExpires_in(int expires_in) {
+        this.expires_in = expires_in;
+    }
 }

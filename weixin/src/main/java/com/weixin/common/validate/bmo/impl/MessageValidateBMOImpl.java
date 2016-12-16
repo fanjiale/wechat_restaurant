@@ -76,17 +76,17 @@ public class MessageValidateBMOImpl implements MessageValidateBMO {
 				
 				if(CommonConstants.EXTRACT_SUCESS.equals(msgSendResult)){
 					ValidateMessage vm = new ValidateMessage();
-					vm.setAccNbr(accNbr);
-					vm.setOpenId(openId);
-					vm.setvCode(validateCode);
+					vm.setPhone_num(accNbr);
+					vm.setOpen_id(openId);
+					vm.setVer_code(validateCode);
 					int expTime = configLoader.getValidateMessageConfig()==null?0:configLoader.getValidateMessageConfig().getExpTime();
 					if(expTime <=0 ){
-						vm.setExpTime(1440);
+						vm.setExpires_in(1440);
 					}else{
-						vm.setExpTime(expTime);
+						vm.setExpires_in(expTime);
 					}
 					messageValidateMapper.insertValidateMessage(vm);
-					retMap.put("msgId", vm.getMsgId());
+					retMap.put("msgId", vm.getId());
 				}
 			}
 		}catch(Exception e){
@@ -108,12 +108,12 @@ public class MessageValidateBMOImpl implements MessageValidateBMO {
 		String resultMsg = "二次检验成功";
 		try {
 			ValidateMessage vm = new ValidateMessage();
-			vm.setAccNbr(accNbr);
-			vm.setOpenId(openId);
-			vm.setMsgId(msgId);
-			vm.setvCode(vCode);
+			vm.setPhone_num(accNbr);
+			vm.setOpen_id(openId);
+			vm.setId(msgId);
+			vm.setVer_code(vCode);
 			ValidateMessage s = messageValidateMapper.queryValidateMessage(vm);
-			if(s == null || s.getMsgId() <= 0){
+			if(s == null || s.getId() <= 0){
 				resultCode = CommonConstants.EXTRACT_FAIL;
 				resultMsg = "二次检验失败";
 			}

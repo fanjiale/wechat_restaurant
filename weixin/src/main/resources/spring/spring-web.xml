@@ -24,7 +24,7 @@
 		</property>
 	</bean>
 
-	<context:component-scan base-package="com.weixin.common.control" />
+	<context:component-scan base-package="com.weixin.common.control;com.weixin.common.user.service;" />
 	
 
 	<!-- 异步消息线程配置 -->	

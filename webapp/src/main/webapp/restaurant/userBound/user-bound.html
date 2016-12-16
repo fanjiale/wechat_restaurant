@@ -11,33 +11,43 @@
     <meta name="viewport" content="width=device-width,initial-scale=0.5, minimum-scale=0.5, maximum-scale=0.5"/>
 
     <link href="resources/css/style.css" rel="stylesheet" type="text/css"/>
-</head>
+    <style type="text/css">
+        [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak, .ng-hide:not(.ng-animate) {
+            display: none !important;
 
+        }
+
+        .nav>li>a {
+            padding: inherit;
+        }
+    </style>
+</head>
 <body>
 <div ng-controller="userBoundController">
     <div class="bound_box1">
         <span class="bound_font1">手机号码</span>
     </div>
-    <div class="bound_box2">
-        <input name="accNbr" type="tel" class="bound_input1" style="color: black" id="productNo" placeholder="请输入手机号码" maxlength="11"
+    <div class="bound_box2" ng-cloak >
+        <input name="accNbr" type="tel" class="bound_input1" style="color: black" id="productNo" ng-model="phone_num" placeholder="请输入手机号码" maxlength="11"
                onkeyup="this.value=this.value.replace(/[^\d]/g,'')" onafterpaste="this.value=this.value.replace(/[^\d]/g,'')">
     </div>
-    <div class="bound_box1">
+    <div class="bound_box1" >
         <span class="bound_font1">鲜果乐账号</span>
     </div>
-    <div class="bound_box2">
+    <div class="bound_box2" ng-cloak >
         <input type="text" class="bound_input1" value="2112312" readonly>
     </div>
     <div class="bound_box1">
         <span class="bound_font1">验证码</span>
     </div>
     <div class="bound_box2">
-        <div style="float: left;">
-            <input name="verCode" type="text" class="bound_input1" style="color: black" id="verCode" placeholder="请输入验证码" maxlength="6"
+        <div style="float: left;" ng-cloak >
+            <input name="verCode" type="text" class="bound_input1" style="color: black" id="verCode" ng-model="ver_code" placeholder="请输入验证码" maxlength="6"
                    onkeyup="this.value=this.value.replace(/[^\d]/g,'')" onafterpaste="this.value=this.value.replace(/[^\d]/g,'')">
         </div>
         <div style="float: right;" id="verCodeBtn" >
-            <input type="button" class="bound_input2" value="获取验证码" onclick="getVerCode()" />
+            <span class="bound_font2" ng-cloak  ng-show="showCurTime">获取成功，{{curTimes}}秒后失效</span>
+            <input type="button" ng-cloak  ng-show="!showCurTime" class="bound_input2" value="获取验证码" ng-click="getVerCode()" />
         </div>
     </div>
     <div class="bound_box1">
@@ -46,7 +56,7 @@
 </div>
 
 <script type="text/javascript" src="../../lib/jquery/jquery.min.js"></script>
-<script type="text/javascript" src="../../lib/angular/angular.js"></script>
+<script type="text/javascript" src="../../lib/angular/angular.min.js"></script>
 <script type="text/javascript" src="user-bound.js"></script>
 </body>
 </html>
