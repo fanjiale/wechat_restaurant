@@ -1,0 +1,24 @@
+﻿body {
+    margin-bottom:50px;
+}
+div,ul,li,a{ margin:0; padding:0;}
+.menu-bottom{ display:flex; display:-webkit-flex; position:fixed; left:0; bottom:0; height:40px; border:1px solid #dcdcdc; width:100%; background:#f5f5f5;z-index:9999999999;}
+.menu-bottom > div{ flex:1; -webkit-flex:1; border-right:1px solid #dcdcdc; text-align:center; position:relative;}
+.menu-bottom > div >a{ display:block; height:40px; line-height:40px; color:#4b4b4b;  background:#f5f5f5; text-decoration:none; font-size:15px;}
+.menu-bottom > div >a i{ display:inline-block; width:10px; height:10px; background:url(/Mall/shop/App/images/mn.png?aa=123321) no-repeat center center; background-size:cover; right:5px; bottom:5px; position:absolute;}
+.menu-bottom .keyboard{ max-width:45px;}
+.menu-bottom .keyboard a{ background:url(/Mall/shop/App/images/back1.png?aa=123321) no-repeat center center; background-size:25px;}
+.menu-bottom .submenu{ border:1px solid #dcdcdc; background:#fff; position:absolute; left:50%; transform:translateX(-50%);  -webkit-transform:translateX(-50%); display:none; bottom:60px; list-style:none; padding:0px; border-radius:5px; min-width:90px; }
+.menu-bottom div:last-child .submenu{ left:inherit; transform:translateX(0);  -webkit-transform:translateX(0); right:10px;}
+.menu-bottom div:last-child .submenu::after{ left:70%;}
+.menu-bottom .submenu::after{ position:absolute; width:8px; height:8px; content:""; border:1px solid #c6c6c6; background:#fff; transform:rotate(45deg); -webkit-transform:rotate(45deg); border-left:none; border-top:none; left:50%; margin-left:-4px; bottom:-5px;}
+.menu-bottom .submenu li{ border-bottom:1px solid #dcdcdc; padding:0px 0px;}
+.menu-bottom .submenu li:last-child{ border-bottom:none;}
+.menu-bottom .submenu li a{ color:#4b4b4b; text-decoration:none; font-size:15px;  display:block; line-height:40px; height:40px; width:100%; display:block; overflow:hidden; white-space:nowrap;}
+
+.fball{ background:url(/Mall/shop/App/images/fball.png?bbaa=123) no-repeat center center; background-size:50px; width:60px;height:60px; position:absolute; bottom:60px; left:10px;z-index: 9990;}
+
+.yindao{ background-color:rgba(0,0,0,0.75); position:fixed; z-index:99999; left:0; top:0; width:100%; height:100%;}
+.ydcon{ width:95%; position:absolute; top:50%; transform:translateY(-50%); -webkit-transform:translateY(-50%);}
+.ydcon img{ width:100%; max-width:500px;}
+ .iknowbtn{ display:block; width:120px; height:30px; line-height:30px; font-size:14px; text-decoration:none; border:2px solid #fff; border-radius:5px; text-align:center; color:#fff; text-align:center; margin:0 auto;}

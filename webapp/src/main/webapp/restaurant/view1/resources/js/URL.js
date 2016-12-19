@@ -1,0 +1,1 @@
+﻿this.Url = "/Mall/Shop/AjaxAspx/ajaxWeb.aspx";

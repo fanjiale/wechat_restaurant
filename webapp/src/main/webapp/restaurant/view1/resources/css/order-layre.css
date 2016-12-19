@@ -1,0 +1,20 @@
+﻿.order-layre { display: none; border-radius: 3rem; background-color: rgba(0,0,0,.6); padding: 0px 6px 0px 3px; max-width: 340px; position: fixed; top: 1rem; left: .8rem; z-index: 999; }
+.order-layre-info { width: 100%; display: flex; display: -webkit-box; justify-content: center; align-content: center; }
+    .order-layre-info > div { flex: 1; -webkit-box-flex: 1; }
+        .order-layre-info > div:first-child { flex: 0; -webkit-box-flex: 0; }
+.order-layre-logo > img { width: 30px; height: 30px; border-radius: 30px; border: 1px solid #fff; }
+.order-layre-msg { padding-left: 10px; line-height: 30px; color: #fff; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+.order-layre-open { display: inline-block; -webkit-animation: fadeInDown 1s .2s ease both; }
+
+@-webkit-keyframes fadeInDown {
+    0% { opacity: 0; -webkit-transform: translateY(-20px); }
+    100% { opacity: 1; -webkit-transform: translateY(0); }
+}
+
+#order-layre-out { display: inline-block; -webkit-animation: fadeOutUp 1s .2s ease both; }
+
+@-webkit-keyframes fadeOutUp {
+    0% { opacity: 1; -webkit-transform: translateY(0); }
+    100% { opacity: 0; -webkit-transform: translateY(-20px); }
+}
