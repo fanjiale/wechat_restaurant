@@ -163,17 +163,15 @@ public class ViewMenuController {
 					+ "&redirect_uri=" + redirect_uri + "&response_type=code&scope=" + oAuthValue + "&state=1#wechat_redirect";
 			response.sendRedirect(requestUrl);
 		}else{
-			String openId = hs.getAttribute(CommonConstants.SESSION_ATTR_OPENID).toString();
-			String retUrl = getRedirectUrl(openId, request.getParameter("url"), basePath,request);
-			 if(retUrl != null){
-				 response.setContentType("text/html; charset=UTF-8");
-				 response.sendRedirect(retUrl);
-			 }else{
-				 throw new Exception("跳转地址获取失败");
-			 }
+			if(request.getParameter("url") != null){
+				response.setContentType("text/html; charset=UTF-8");
+				response.sendRedirect(basePath + request.getParameter("url"));
+			}else{
+				throw new Exception("跳转地址获取失败");
+			}
 		}
 	}
-	
+
 	/**
 	 * 跳转地址 
 	 * @param openId 

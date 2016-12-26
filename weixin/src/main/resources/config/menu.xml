@@ -110,16 +110,16 @@
 			</MenuSub>
 			<MenuSub>
 				<Key>33</Key>
-				<Name>关注我们</Name>
+				<Name>关注我们1</Name>
 				<Type>view</Type>
-				<Url>http://xmz9172.xicp.net/weixin-manager-web/aboutUs/aboutUs.jsp</Url>
+				<Url><![CDATA[http://h1532l6172.imwork.net/restaurant/restaurant/view/index.html]]></Url>
 				<IsOAuthPage></IsOAuthPage>
 			</MenuSub>	
 			<MenuSub>
 				<Key>34</Key>
-				<Name>APP下载</Name>
+				<Name>APP下载1</Name>
 				<Type>click</Type>
-				<Url></Url>
+				<Url><![CDATA[http://h1532l6172.imwork.net/restaurant/restaurant/view/index.html]]></Url>
 				<IsOAuthPage></IsOAuthPage>
 			</MenuSub>	
 		</MenuSubList>
